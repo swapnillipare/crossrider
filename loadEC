@@ -1287,7 +1287,7 @@ function Compose($composeContainer, updateBtnFlag, typeOfClassifier) {
 	    
 	    $classifybtnContainer = $buttonDiv.clone().insertBefore($extraButtonsPlacement).html('<div class="classify" data-tooltip="Classify" aria-label="Classify" style="float: right;-webkit-user-select: none;"><div class="oh J-Z-I J-J5-Ji T-I-ax7" style="-webkit-user-select: none;"><div class="J-J5-Ji J-Z-I-J6-H" style="-webkit-user-select: none;"><img src="https://testmshelloworld.appspot.com/Images/classify.png" style="margin-top: 5px;width:18px;height:18px;" alt="Classify"></div></div></div>');
 	    //var $radiobtncontainer = $radiobuttonDiv.clone().html('<input type="radio" name="radio-group" id="public" value="public">&nbsp;&nbsp;<label for="public">Public</label><br><input type="radio" name="radio-group" id="private" value="private">&nbsp;&nbsp;<label for="private">Private</label><br><input type="radio"name="radio-group" id="restricted" value="restricted">&nbsp;&nbsp;<label for="restricted">Restricted</label><br><input type="radio" name="radio-group" id="confident" value="confident">&nbsp;&nbsp;<label for="confident">Confident</label>');
-	    var $radiobtncontainer = $radiobuttonDiv.clone().html($('#gcontrol-classifiers-radio').html());
+	    var $radiobtncontainer = $radiobuttonDiv.clone().html($('#gcontrol-classifiers').html());
 	    
 	    $classifybtnContainer.children().eq(0).children().hover(function() {
 	    			$( this ).addClass("oi");
