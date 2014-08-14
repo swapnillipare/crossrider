@@ -953,13 +953,13 @@ var checkLoaded = function() {
 					switch (locale) {
 					case 'fr':
 						dictionary = {
-							'inbox': 'BoÃ¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½te de rÃ¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½ception',
+							'inbox': 'Boï¿½ï¿½ï¿½ï¿½te de rï¿½ï¿½ï¿½ï¿½ception',
 							'drafts': 'Brouillons',
 							'spam': 'Spam',
 							'forums': 'Forums',
-							'updates': 'Mises Ã¯Â¿Â½Ã¯Â¿Â½  jour',
+							'updates': 'Mises ï¿½ï¿½  jour',
 							'promotions': 'Promotions',
-							'social_updates': 'RÃ¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½seaux sociaux'
+							'social_updates': 'Rï¿½ï¿½ï¿½ï¿½seaux sociaux'
 					};
 						break;
 
@@ -1130,7 +1130,7 @@ function OnlineMode() {
 				  if(typeof mailData !== "undefined" && typeof mailData.subject !== "undefined"){
 					  var sub = mailData.subject.toLowerCase();
 					  
-					  var classifiers = ["public:", "private:","restricted:","confident:"];
+//					  var classifiers = ["public:", "private:","restricted:","confident:"];
 					  
 					  var strFound = false;
 					  var type = "";
@@ -1367,13 +1367,13 @@ function sendEmail() {
 	        }
 
             /* Capitalize the tag. */
-            arguments[0]Â = str + "&acn=!" + tag.charAt(0).toUpperCase() + tag.slice(1).toLowerCase();
+            arguments[0] = str + "&acn=!" + tag.charAt(0).toUpperCase() + tag.slice(1).toLowerCase();
 
             window.XMLHttpRequest.prototype._send.apply(this, arguments);
           }
         } 
 
-        if (!defered) {Â 
+        if (!defered) {
           window.XMLHttpRequest.prototype._send.apply(this, arguments);
         }
       };
