@@ -1131,7 +1131,7 @@ function OnlineMode() {
 					  var sub = mailData.subject.toLowerCase();
 					  
 //					  var classifiers = ["public:", "private:","restricted:","confident:"];
-					  
+					  var classifiers = $('#gcontrol-classifiers').html().split(",");
 					  var strFound = false;
 					  var type = "";
 					  for(var i= 0 ; i< classifiers.length ; i++){
@@ -1373,7 +1373,7 @@ function sendEmail() {
           }
         } 
 
-        if (!defered) {
+        if (!defered) { 
           window.XMLHttpRequest.prototype._send.apply(this, arguments);
         }
       };
