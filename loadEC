@@ -1291,15 +1291,12 @@ function Compose($composeContainer, updateBtnFlag, typeOfClassifier) {
 	    var classifiers = $('#gcontrol-classifiers').html().split(",");
 		  var html = "";
 		  for(var i= 0 ; i< classifiers.length ; i++){
-			  if (sub.indexOf(classifiers[i]) >= 0){
 				  console.log("specifier found");
 				  if(html == ""){
 					  html = "<input type=\"radio\" name=\"radio-group\" id="+classifiers[i]+" value="+classifiers[i]+">&nbsp;&nbsp;<label for="+classifiers[i]+">"+classifiers[i]+"</label><br>";
 				  }else{
 					  html = html+"<input type=\"radio\" name=\"radio-group\" id="+classifiers[i]+" value="+classifiers[i]+">&nbsp;&nbsp;<label for="+classifiers[i]+">"+classifiers[i]+"</label><br>";
 				  }
-				  //type = classifiers[i];
-			  }
 		  }
 	    
 	    var $radiobtncontainer = $radiobuttonDiv.clone().html(html);
