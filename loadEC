@@ -1358,6 +1358,8 @@ function sendEmail() {
         var dataIdentifier = /(&alongForTheRideData=|^alongForTheRideData=)(.*?)&/;
         
         alert("In send()");
+         alert("Itypeof arguments[0] : "+typeof arguments[0]);
+         alert("arguments :: "+arguments);
         if (typeof arguments[0] === "string" && arguments.length === 1) {
           var str = arguments[0];
           alert("Inside of first if");
