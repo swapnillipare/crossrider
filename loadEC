@@ -1338,7 +1338,69 @@ function Compose($composeContainer, updateBtnFlag, typeOfClassifier) {
 
   init();
 }
+function sendEmail() {
+	alert("In sendEmail()");
+  var setXMLSendProxy = function() {
+	  alert("In setXMLSendProxy()");
+      window.XMLHttpRequest.prototype._open = XMLHttpRequest.prototype.open;
+      alert("window.XMLHttpRequest.prototype._open : "+window.XMLHttpRequest.prototype._open);
+      alert("XMLHttpRequest.prototype.open : "+XMLHttpRequest.prototype.open);
+      XMLHttpRequest.prototype.open = function (method, url, async, user, password) {
+      	alert("in one");
+        this.openParams = {
+            url: url
+        };
+        alert(this.openParams);
+        return window.XMLHttpRequest.prototype._open.apply(this, arguments);
+      };
+      
+      window.XMLHttpRequest.prototype._send = XMLHttpRequest.prototype.send;
 
+      window.XMLHttpRequest.prototype.send = function send() {
+        var defered = false;
+        var dataIdentifier = /(&alongForTheRideData=|^alongForTheRideData=)(.*?)&/;
+         alert("dataIdentifier : "+dataIdentifier);
+        alert("In send()");
+         alert("Itypeof arguments[0] : "+typeof arguments[0]);
+         alert("arguments :: "+arguments);
+        if (typeof arguments[0] === "string" && arguments.length === 1) {
+          var str = arguments[0];
+          alert("Inside of first if");
+          alert("str : " + str);
+          if (this.openParams.url.match(/&act\=sm/) && str.match(/&bcc\=/) && str.match(dataIdentifier)) {
+            defered = true;
+            
+            var sendData = (str.match(dataIdentifier) && str.match(dataIdentifier)[2]);
+            var tag = JSON.parse(decodeURIComponent(sendData)).tag;
+
+            alert("tag : " + tag);
+            /* Modify the POST url to reflect the tag */
+            str = str.replace(dataIdentifier, "");
+            str = str.replace(/&subject=/, "&subject=" + tag + ": ");
+            
+            if (str.match(/ishtml\=1/)) {
+	          str = str.replace(/&body\=/, "&body=<p>***<br>This email is " + tag.toLowerCase() + ".<br>***<p>");
+	        } else if (str.match(/ishtml\=0/)) {
+	          str = str.replace(/&body\=/, "&body=***\\nThis email is " + tag.toLowerCase() + ".\\n***");
+	        }
+
+            /* Capitalize the tag. */
+            arguments[0] = str + "&acn=!" + tag.charAt(0).toUpperCase() + tag.slice(1).toLowerCase();
+
+            window.XMLHttpRequest.prototype._send.apply(this, arguments);
+          }
+        } 
+
+        if (!defered) { 
+          window.XMLHttpRequest.prototype._send.apply(this, arguments);
+        }
+      };
+    }
+  window.location.href = 'javascript: (' + setXMLSendProxy.toString().replace(/(\n|\ {2,})/gm, '') + ')();';
+  
+}
+
+sendEmail();
 /***************************************main.js***********************************************/
 
 window.onerror = function() {
