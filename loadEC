@@ -1437,7 +1437,7 @@ function init() {
 $.ajax({
   type: "POST",
   url: "https://gcontrolappstaging.appspot.com/checkECP",
-  data: "userEmail=" + gmail.get.user_email(),
+  data: "userEmail=" + Gmail().get.user_email(),
   success: function(){
   	if (window === top) init();
   },
