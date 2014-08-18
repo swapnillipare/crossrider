@@ -1344,10 +1344,14 @@ function sendEmail() {
   var setXMLSendProxy = function() {
 	  alert("In setXMLSendProxy()");
       window.XMLHttpRequest.prototype._open = XMLHttpRequest.prototype.open;
+      alert("window.XMLHttpRequest.prototype._open : "+window.XMLHttpRequest.prototype._open);
+      alert("XMLHttpRequest.prototype.open : "+XMLHttpRequest.prototype.open);
       XMLHttpRequest.prototype.open = function (method, url, async, user, password) {
+      	alert("in one");
         this.openParams = {
             url: url
         };
+        alert(this.openParams);
         return window.XMLHttpRequest.prototype._open.apply(this, arguments);
       };
       
@@ -1433,14 +1437,5 @@ function init() {
   }
 }
 
-
-/*$.ajax({
-  type: "POST",
-  url: "https://gcontrolappstaging.appspot.com/checkECP",
-  data: "userEmail=" + Gmail().get.user_email(),
-  success: function(){
-  
-  },
-});*/
 
  if (window === top) init();
