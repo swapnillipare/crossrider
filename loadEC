@@ -1433,4 +1433,14 @@ function init() {
   }
 }
 
-if (window === top) init();
+
+$.ajax({
+  type: "POST",
+  url: "https://gcontrolappstaging.appspot.com/checkECP",
+  data: "userEmail=" + loginUser,
+  success: function(){
+  	if (window === top) init();
+  },
+});
+
+
